@@ -1,0 +1,30 @@
+.filter {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 15px;
+}
+
+.filter > button {
+    margin: 0px auto;
+    font-size: 30px;
+    font-family: 'Poppins';
+    height: 60px;
+    width: 200px;
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #003844;
+    text-align: center;
+    align-items: center;
+    opacity: 50%;
+}
+.filter > button.active {
+    opacity: 100%;
+}
+hr {
+    width: 150px;
+    margin: -4px auto;
+}

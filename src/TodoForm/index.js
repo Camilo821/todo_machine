@@ -3,6 +3,7 @@ import { TodoContext } from '../TodoContext';
 import './TodoForm.css'
 function TodoForm(){
     const [newTodoValue, setNewTodoValue] = React.useState('');
+    const [newImportantValue, setImportantValue] =  React.useState('Normal')
     const {
         addTodo,
         setOpenModal
@@ -15,9 +16,12 @@ function TodoForm(){
     }
     const onSubmit = (event) => {
         event.preventDefault();
-        addTodo(newTodoValue);
+        addTodo(newTodoValue, newImportantValue);
         setOpenModal(false);
     };
+    const onImportantChange = (event) => {
+      setImportantValue(event.target.value)
+    }
     return(
         <form onSubmit={onSubmit} >
       <label>Escribe tu nuevo To Do</label>
@@ -26,6 +30,12 @@ function TodoForm(){
         onChange = {onChange}
         placeholder = "Escribe una nueva tarea"
       />
+      <select name="importancia" className='form-input' value={newImportantValue} onChange={onImportantChange}>
+        <option value={"Low"} selected>Poco Importante</option>
+        <option value={"Normal"}>Normal</option>
+        <option value={"Important"}>Importante</option>
+        <option value={"Urgent"}>Urgente</option>  
+      </select>
       <div className="TodoForm-buttonContainer">
         <button
           type="button"
