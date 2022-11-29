@@ -17,9 +17,9 @@ function AppUI(){
       <TodoSearch/>
       <ViewedFilter />
       <TodoList >
-        {error && <p className='info'>Desesperate, hubo un error :(</p>}
+        {/*{error && <p className='info'>Desesperate, hubo un error :(</p>}
         {loading && <p className='info'>Estamos cargando, no desesperes</p>}
-        {(!loading && !searchedTodos.length) && <p className='info'>Crea tu primer TODO</p>}
+        {(!loading && !searchedTodos.length) && <p className='info'>Crea tu primer TODO</p>}*/}
         {searchedTodos.map(todo => (
           <TodoItem 
             key={todo.text}
