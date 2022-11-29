@@ -8,7 +8,7 @@ function TodoProvider(props){
         error,
         item: todos,
         saveItem: saveTodos,
-        loading} = useLocalStorage('TODOS_V1', []);
+        loading} = useLocalStorage('TODOS_V2', []);
       const [openModal, setOpenModal] = React.useState(false)
       const [searchValue, setSearchValue] = React.useState('');
       const [activePage, setNewActivePage] = React.useState('Por hacer');
