@@ -10,7 +10,10 @@ import { ViewedFilter } from '../ViewedFilter';
 import { TodoHeader } from '../TodoHeader';
 import { TodoSearch } from '../TodoSearch';
 import { TodoCounter } from '../TodoCounter';
-import { useTodos } from './useTodos'
+import { useTodos } from './useTodos';
+import { TodosError } from '../TodosError';
+import { TodosLoading } from '../TodosLoading';
+import { EmptyTodos } from '../EmptyTodos'
 //const Swal = require('sweetalert2')
 //const defaultTodos = [
 //  { text:"Cortar cebolla", completed: false },
@@ -35,10 +38,20 @@ return(
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
     </TodoHeader>
     <ViewedFilter activePage={activePage} setNewActivePage={setNewActivePage} />
-    <TodoList >
-      {error && <p className='info'>Desesperate, hubo un error :(</p>}
-      {loading && <p className='info'>Estamos cargando, no desesperes</p>}
-      {(!loading && !searchedTodos.length) && <p className='info'>Crea tu primer TODO</p>}
+    <TodoList error={error} loading={loading} searchedTodos={searchedTodos} onError={() => <TodosError />} onLoading={() => <TodosLoading />} onEmptyTodos={() => <EmptyTodos />} render={todo => (
+        <TodoItem 
+          key={todo.text}
+          text={todo.text}
+          completed={todo.completed}
+          important={todo.important}
+          onComplete={() => completeTodos(todo.text)}
+          onDelete={() => deleteTodo(todo.text)}/>
+      )} />
+    
+    {/*<TodoList >
+      {error && <TodosError />}
+      {loading && <TodosLoading />}
+      {(!loading && !searchedTodos.length) && <EmptyTodos />}
       {searchedTodos.map(todo => (
         <TodoItem 
           key={todo.text}
@@ -47,8 +60,8 @@ return(
           important={todo.important}
           onComplete={() => completeTodos(todo.text)}
           onDelete={() => deleteTodo(todo.text)}/>
-      ))}
-    </TodoList>
+        ))}
+    </TodoList>*/}
     {!!openModal && (
     <Modal>
       <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} ></TodoForm>
