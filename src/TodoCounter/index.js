@@ -1,5 +1,5 @@
 import React from "react";
-import { TodoContext } from "../TodoContext";
+
 import './TodoCounter.css'
 
 //const estilos = {
@@ -7,8 +7,7 @@ import './TodoCounter.css'
 //    backgroundColor: 'yellow'
 //};
 // estilos en línea con style={} en el elemento
-function TodoCounter() {
-    const {totalTodos, completedTodos} = React.useContext(TodoContext);
+function TodoCounter({ totalTodos, completedTodos }) {
     return(
         <React.Fragment>
             {(completedTodos>=1 && completedTodos!==totalTodos) &&  <h2 className="TodoCounter">Has completado {completedTodos} de {totalTodos} TODOs</h2>}

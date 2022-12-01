@@ -1,9 +1,8 @@
 import React from 'react'
 import { useLocalStorage } from './useLocalStorage';
 const Swal = require('sweetalert2')
-const TodoContext = React.createContext();
 
-function TodoProvider(props){
+function useTodos(props){
     const {
         error,
         item: todos,
@@ -64,7 +63,7 @@ function TodoProvider(props){
         saveTodos(newTodos);
       }
     return(
-        <TodoContext.Provider value={{
+        {
             error,
             activePage,
             setNewActivePage,
@@ -79,10 +78,8 @@ function TodoProvider(props){
             deleteTodo,
             openModal,
             setOpenModal
-        }}>
-            {props.children}
-        </TodoContext.Provider>
+        }
     );
 }
 
-export { TodoContext, TodoProvider }
+export { useTodos }

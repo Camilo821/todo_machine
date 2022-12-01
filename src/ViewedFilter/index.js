@@ -1,11 +1,9 @@
 import React from "react";
 import './ViewedFilter.css'
-import { TodoContext } from "../TodoContext";
 
 
 
-function ViewedFilter(){
-    const { activePage, setNewActivePage } = React.useContext(TodoContext)
+function ViewedFilter({ activePage, setNewActivePage }){
     const onSelectPage = () => {
         if(activePage === 'Por hacer'){
             setNewActivePage('Hecho')
